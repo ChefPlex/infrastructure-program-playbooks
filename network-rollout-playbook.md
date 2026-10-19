@@ -12,7 +12,7 @@ Written from rollouts across retail store networks, multi-campus office networks
 
 ## The short version
 
-1. **Run it as a sequence of outputs.** Each phase produces a named document that the next phase needs. The schedule comes after the requirements, because it is built from them.
+1. **Plan in the right order.** The schedule comes after the requirements, because it is built from them.
 2. **Write the non-functional specifications first.** Capacity, scaling and disaster recovery (DR) decide the site design. They are not a section to fill in afterward.
 3. **Circuits are the critical path.** Order them by priority tier, from two carriers where the design needs it, and ask where the cables physically run.
 4. **Build one site plan and copy it.** Then survey every site to find the ones that do not fit the copy, before the cut-over finds them for you.
@@ -23,26 +23,17 @@ Written from rollouts across retail store networks, multi-campus office networks
 
 ---
 
-## Step 1: Sequence the program by its outputs
+## Step 1: Plan in the right order
 
-**Each phase of the program produces a document, and that document is the input to the next phase.** The Project Management Institute (PMI) process groups (initiating, planning, executing, monitoring and controlling, closing) are usually read as a checklist. Laid out as a schedule with predecessors, they show why the order matters: no scope without the charter, and no schedule without the scope.
+Each stage produces something the next one needs: no scope without a charter, no site design without the requirements, and no schedule without the circuit lead times. The PMI (Project Management Institute) process groups are in parentheses for anyone who works from them.
 
-For a network rollout the chain looks like this:
-
-| Phase | Output | What it feeds |
+| Stage | What comes out of it | What it feeds |
 |:---|:---|:---|
-| **Initiating** | Charter: sites in scope, budget split into capital and expense, sponsor, what is explicitly out | Stakeholder register, scope |
-| **Initiating** | Stakeholder register: site managers, facilities, carriers, help desk, application owners, security | Requirements, communication plan |
-| **Planning** | Requirements and a requirements traceability matrix (each requirement mapped to the design element that meets it and the test that proves it) | Scope statement, site design, acceptance tests |
-| **Planning** | Non-functional specifications (Step 2) | Standard site design |
-| **Planning** | Work breakdown structure (WBS) with one work package per site | Schedule, resource plan |
-| **Planning** | Procurement plan: circuits and hardware, with lead times (Step 3) | Schedule, budget |
-| **Planning** | Risk register, with each risk analyzed and given a response | Wave plan, change requests |
-| **Executing** | Site pre-work and cut-overs (Steps 4 to 7) | Monitoring, close-out |
-| **Monitoring and controlling** | Change requests and re-baselines, controlled through one integrated change process | Updated schedule and budget |
-| **Closing** | Closed procurements (old circuits cancelled), handover, close-out report | Operations |
-
-The process names follow PMI's *A Guide to the Project Management Body of Knowledge* (PMBOK Guide), fifth edition. Later editions rename some of them.
+| **Start** (Initiating) | Charter: sites in scope, capital and expense budget, sponsor, what is out. The first names on the stakeholder list | Requirements, scope |
+| **Plan** (Planning) | Requirements, the site standard (Step 2), circuit and hardware orders with lead times (Step 3), one work package per site, the risk list | The wave schedule |
+| **Run** (Executing) | Site pre-work and cut-overs (Steps 4 to 7) | Tracking, close-out |
+| **Track** (Monitoring and Controlling) | Change requests and re-baselines, in one place | An updated schedule and budget |
+| **Close** (Closing) | Old circuits cancelled, handover to network operations, close-out report (Step 9) | Operations |
 
 ### Weak vs better
 
@@ -294,7 +285,7 @@ Measures worth reporting each week:
 All accessed as of October 2026.
 
 - NIST SP 800-53 Rev. 5, *Security and Privacy Controls for Information Systems and Organizations* (CP-8 telecommunications services, CM-2 baseline configuration, CM-3 configuration change control): https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf
-- Project Management Institute, *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*, fifth edition (2013), for the process group and process names in Step 1. Later editions rename some processes.
+- Project Management Institute, *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*, fifth edition (2013), for the process group names in Step 1.
 
 NIST SP 800-53 is written for federal systems. Private organizations are not bound by it; it is cited here as a tested, public description of what change control and alternate telecommunications should cover.
 
