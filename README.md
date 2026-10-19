@@ -1,8 +1,8 @@
 # infrastructure-program-playbooks
 
 Playbooks for Technical Program Managers (TPMs) running infrastructure and platform programs: data
-center and site build-outs, server and operating system migrations, directory services, and network
-rollouts.
+center and site build-outs, server and operating system migrations, directory services, network
+rollouts, and moving production to pipeline-only changes.
 
 Infrastructure programs fail in a different place from software programs. The code is rarely the
 problem. The problem is the dependency nobody listed, the system you are keeping that the change
@@ -22,6 +22,7 @@ Companion to [security-program-playbooks](https://github.com/ChefPlex/security-p
 | [Directory Services Upgrade and Consolidation](directory-services-upgrade-playbook.md) | Upgrading and consolidating Active Directory (AD) and LDAP (Lightweight Directory Access Protocol) across domains without breaking authentication. Scoping it as a coexistence program, treating the functional level as a recorded decision, finding the LDAP binders before anything is retired, and consolidating domains in the order that keeps access working | Available |
 | [Data Center and Storage Build-Out](data-center-build-out-playbook.md) | Standing up or modernizing capacity across a primary and a disaster recovery (DR) site. Recovery targets before hardware, long-lead procurement as the critical path, the floor planned on paper, primary and DR built as a pair, consolidation onto fewer and denser machines, a move weekend run on a published clock, and why DR is real only once a failover test passes | Available |
 | [Network Rollout Playbook](network-rollout-playbook.md) | Rolling a network change across many sites, from a few campuses to hundreds of stores. Planning in the right order, capacity measured at a real site's size, circuits ordered by tier, a fixed pre-work window per site on a weekly cadence, cut-overs in small changes, status published on a clock, and the site that is always different | Available |
+| [No Manual Changes in Production](no-manual-changes-program.md) | Running the program that moves an organization to pipeline-only changes. Sizing the problem from a survey and from the logs, defining "manual", how to run it start to finish, wave-based cutover (pre-work, soft cutover, hard cutover), break-glass rules, the weekly measures, and a worked example | Available |
 
 ---
 

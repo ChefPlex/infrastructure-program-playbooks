@@ -355,7 +355,7 @@ These are federal guidelines and industry standards. Private organizations are n
 - [The RAID Log](https://github.com/ChefPlex/tpm-templates/blob/main/raid-log-guide.md): tracking long-lead items as dependencies with likelihood and impact
 - [Program Phases Playbook](https://github.com/ChefPlex/tpm-templates/blob/main/program-phases-playbook.md): where a build-out sits in the program lifecycle
 - [Steering Committee Deck Structure](https://github.com/ChefPlex/program-reporting-frameworks/blob/main/steering-committee-deck-structure.md): reporting DR readiness and critical-path risk upward
-- [Cyber Incident Playbook](https://github.com/ChefPlex/tpm-templates/blob/main/incident-management/cyber-incident-playbook.md): when a real event forces the failover you tested
+- [Cyber Incident Playbook](https://github.com/ChefPlex/security-program-playbooks/blob/main/cyber-incident-playbook.md): when a real event forces the failover you tested
 - [End-of-Support Migration Playbook](end-of-support-migration-playbook.md): moving the server estate that runs on this infrastructure
 - [Directory Services Upgrade Playbook](directory-services-upgrade-playbook.md): the authentication dependency every failover test touches
 
