@@ -323,7 +323,8 @@ Window (date, start, end, time zone):
 Implementer:                 Backup implementer:
 Application owner on call:   Go / no-go decision by:
 Pre-checks (backup taken and verified, snapshot, monitoring paused, users notified):
-Steps (numbered, each with expected result):
+Freeze point (if data moves): when the old system stops taking changes, and who announces it
+Steps (numbered, each with clock time, owner, expected result and who checks it):
 Verification (what the owner tests, and what "working" looks like):
 Back-out trigger (the condition that means we roll back):
 Back-out steps (numbered, with time needed):

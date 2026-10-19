@@ -149,7 +149,8 @@ What makes it different:
 > | Cut-over lead (one person) | |
 > | Rollback decision owner (one person) | |
 > | Pre-checks: backup verified, replication in sync, change approved | |
-> | Cut-over steps with owner and expected duration for each | |
+> | Freeze point: when the old system stops taking changes, and who announces it | |
+> | Cut-over steps on the clock: time, step, owner, and who checks it before the next step starts | |
 > | **Go / no-go point:** time, and the criteria that must be true | |
 > | **Rollback trigger:** what result, or what clock time, forces rollback | |
 > | Rollback steps with owner and expected duration for each | |
