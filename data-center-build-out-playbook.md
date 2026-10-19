@@ -159,6 +159,17 @@ What makes it different:
 >
 > **Rule:** the rollback steps must fit inside the window with the cut-over steps. If they do not, the window is too short.
 
+### When the migration is a consolidation
+
+**Moving many old servers onto fewer, larger ones needs a separate business case, and it has risks a straight move does not.** It comes in two common forms: several aging physical frames replaced by one larger frame, or a physical-to-virtual (P2V) conversion that turns a rack of standalone servers into virtual machines on a cluster.
+
+The business case is usually maintenance, power, cooling and floor space. Write each one down per server retired, so the savings can be checked at close. The risks are less obvious:
+
+- **Not every server should be converted.** Triage the list the way the [End-of-Support Migration Playbook](end-of-support-migration-playbook.md) does. A share of the servers will turn out to be unused and can be decommissioned instead, which is cheaper than converting them.
+- **Total power falls and power per rack rises.** One large frame or a dense virtualization cluster can draw more from a single rack than the room was designed for. Check the circuits and the cooling for that rack (Step 3), not only the total.
+- **One failure now takes out many systems.** The new frame or cluster's maintenance window becomes the window for all of them, and its DR design (Step 5) has to cover all of them.
+- **The engineers are the constraint.** Conversion work depends on a few people who know the virtualization platform, and they are the first to be pulled onto something urgent. Plan pre-work in parallel streams so the conversions do not all wait on the same two people, and build a standard image for each common server type early, so the later conversions are repeats.
+
 ## Step 7: Acceptance testing before production
 
 **New equipment is not ready because it powered on.** Acceptance testing is the step between "installed" and "carrying production," and it is where you find the failed component, the miscabled path or the half-configured redundancy while it is still cheap.
@@ -224,6 +235,22 @@ You cannot sequence what you have not counted. NIST SP 800-53 Rev. 5 CM-8 (confi
 - **The contract's access rules.** Who is on the access list, how far ahead visits must be booked, loading dock hours, and what paperwork equipment needs to leave. SP 800-53 PE-16 requires organizations to control components entering and leaving a facility and to "Maintain records of the system components." Expect both facilities to enforce their own version of this, and book it early.
 - **The lease clock.** The old contract's end date is fixed. Work back from it, with time for the move to slip at least once.
 
+### Run the move weekend on a published clock
+
+**The move weekend runs to a critical path written down in advance, and status goes out at times announced in advance.** In the weeks before, a recurring review of open issues and tasks with every team involved keeps the list short. On the weekend itself, the plan is a sequence where each step has a start time, an owner and a predecessor.
+
+A typical sequence for a system that moves with its data:
+
+1. **Freeze.** At a stated time the old system stops taking updates. Everyone who uses it is told the time in advance.
+2. **Back up and verify.** The backup is confirmed good before anything is shut down.
+3. **Verify the data, then load it.** Each data set that has to be checked (account codes, product codes, customer records) is signed off by named people before it is loaded, and the loads run in order. When two people must verify a data set, the second verification is a predecessor of the load.
+4. **Shut down, move, start up.** Physical moves, or the final replication and cut-over (Step 6).
+5. **Test.** The business owner's tests, not only the technical checks.
+6. **Go live.** A soft launch to a small group can come before the full launch, with a few days between them.
+7. **Keep the old system readable.** Set a date, often a month later, after which the old system is switched off. Until then, it answers questions about the data that moved.
+
+Send status at each announced time, whether or not anything changed: backup complete, shutdown, in transit, loading, testing, live. Put the time and the state in the subject line ("Testing in progress, 3:00 a.m. Sunday"; "Move complete, 9:30 a.m. Sunday"), so people can follow the weekend from their inbox without opening anything. A late step shows up as a missed or changed update, and nobody needs to call the people doing the work to find out. When there are several moves, write down how long each one took. If the last move took 36 hours, plan the next one from that.
+
 ## Step 10: Fold a new application or web property into both sites
 
 **Adding a new system, or an acquired web property, to existing data centers is a small build-out with the same failure modes.** The common mistake is to land it in primary and treat DR as a follow-up ticket that never closes.
@@ -236,6 +263,8 @@ Before it goes live, settle:
 - **Replication and backup** set up and verified before the first production data lands.
 - **A failover test** (Step 8), included in the onboarding, not deferred.
 - **Ownership,** recorded: who is called when it fails at 2 a.m., at each site.
+- **Its network,** retired. An acquired property usually arrives with its own network devices. The integration is finished when its servers are on the company network and those devices are decommissioned.
+- **Its partner connections and its gaps.** Business-to-business links to partners, and data that does not yet meet the company's security standards, are found late and form the tail of the work. List them as named follow-ons with owners instead of leaving them as reasons the program cannot close.
 
 **The definition of done for onboarding is a passed failover test**, the same as for the build-out itself.
 
@@ -288,13 +317,13 @@ Then close the paper: cancel circuits, end support on retired hardware, return s
 
 **Step 5: the pair.** Both sites get the same array model, firmware and naming. Synchronous replication cannot be supported over the inter-region distance, so the team designs asynchronous replication and measures in testing that it holds a 5-minute RPO at expected load. The colocation contract for the DR site includes remote hands with a 1-hour response, because the on-call team is a 4-hour drive away (CP-7(2)).
 
-**Step 6: migration.** Thirty systems move to the new primary array in five waves over ten weekends. Wave 1 is the twelve internal tools. In wave 2, validation finds a reporting job pointed at a hard-coded path on the old array. The team rolls back inside the window, fixes the path, and moves the system the following weekend. The old array stays live, read-only, for 30 days after the last wave.
+**Step 6: migration.** Thirty systems move to the new primary array in five waves over ten weekends. Wave 1 is the twelve internal tools. In wave 2, validation finds a reporting job pointed at a hard-coded path on the old array. The team rolls back inside the window, fixes the path, and moves the system the following weekend. The old array stays live, read-only, for 30 days after the last wave. Alongside the waves, 26 standalone servers are triaged for conversion to virtual machines: 19 are converted and 7 are decommissioned, and the new cluster's rack gets a third power circuit after the paper plan shows it drawing more than the two it was given.
 
 **Step 7: acceptance.** During burn-in, pulling Feed B on one DR rack drops a switch that was plugged into Feed A twice. It is re-cabled and the test is repeated before acceptance is signed.
 
 **Step 8: DR test.** The first full failover test runs in month 7. Order processing recovers in 50 minutes with about 3 minutes of data loss: PASS. The online store fails over but customers cannot reach it, because its name records point only at primary: FAIL, with an owner and a 30-day fix. Failback takes six hours, longer than planned, and the runbook is rewritten. The steering committee report shows 28 of 30 systems as "DR proven" and 2 as "replicated, not proven" until the retest passes in month 8.
 
-**Step 9: the move.** The old DR cage holds 40 devices according to the inventory. The physical walk finds 46. Four of the extra six are retired and two support a finance system nobody had listed. The finance system is added to wave 4. The move finishes three weeks before the old lease ends.
+**Step 9: the move.** The old DR cage holds 40 devices according to the inventory. The physical walk finds 46. Four of the extra six are retired and two support a finance system nobody had listed. The finance system is added to wave 4. On move weekend, status goes out at six times published the week before, and the one late step (a slow backup verification) shows up in a revised update. The move finishes three weeks before the old lease ends.
 
 **Step 10 to 12: onboarding and close.** The acquired online store is onboarded at both sites, and its done criterion is the month 8 retest. The old arrays are sanitized, with a certificate per device, before trade-in. Two old circuits still billing after the move are cancelled at close.
 
