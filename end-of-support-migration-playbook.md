@@ -50,7 +50,7 @@ customers who need to run certain legacy Microsoft products past the end of supp
 secure while one migrates to a newer, supported platform."
 
 Read that as the vendor telling you the extension has an end too. On the same overview page, the ESU
-window for one recent server generation is listed as three years, ending October 13, 2026. Your
+window for one recent server generation was listed as three years, and it ended on October 13, 2026. Your
 program should treat any extension as a bridge with a published far bank, never as a place to stay.
 
 Three public sources set the expectation your security and audit teams will hold you to:

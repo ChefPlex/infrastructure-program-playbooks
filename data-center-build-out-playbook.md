@@ -245,9 +245,9 @@ Before it goes live, settle:
 
 | Contract | Clauses a TPM should read |
 |:---|:---|
-| **Colocation** | Power commitment per rack and the charge for exceeding it · cross-connect fees and lead times · remote hands scope, rates and response times · access list rules and notice periods · service levels for power and cooling, and what remedy applies · expansion rights for adjacent space · exit terms and decommission obligations |
-| **Hardware** | Committed delivery date and remedy for a miss · installation services and their acceptance criteria (Step 7) · when the support term starts (ship date or install date) · parts replacement response times at each site · end-of-support dates for the models you are buying |
-| **Carrier** | Provisioning date commitment · service levels for the inter-site link · diverse routing, if the DR design depends on it |
+| **Colocation** | Power commitment per rack and the charge for exceeding it; cross-connect fees and lead times; remote hands scope, rates and response times; access list rules and notice periods; service levels for power and cooling, and what remedy applies; expansion rights for adjacent space; exit terms and decommission obligations |
+| **Hardware** | Committed delivery date and remedy for a miss; installation services and their acceptance criteria (Step 7); when the support term starts (ship date or install date); parts replacement response times at each site; end-of-support dates for the models you are buying |
+| **Carrier** | Provisioning date commitment; service levels for the inter-site link; diverse routing, if the DR design depends on it |
 
 **Check support start dates carefully.** If support starts at shipment and installation is delayed by power or circuits, you are paying for coverage on equipment sitting in a crate.
 
