@@ -150,7 +150,7 @@ What makes it different:
 > | Rollback decision owner (one person) | |
 > | Pre-checks: backup verified, replication in sync, change approved | |
 > | Freeze point: when the old system stops taking changes, and who announces it | |
-> | Cut-over steps on the clock: time, step, owner, and who checks it before the next step starts | |
+> | Cut-over steps with owner and expected duration for each | |
 > | **Go / no-go point:** time, and the criteria that must be true | |
 > | **Rollback trigger:** what result, or what clock time, forces rollback | |
 > | Rollback steps with owner and expected duration for each | |
@@ -159,6 +159,8 @@ What makes it different:
 > | Communications: who is told at start, at go / no-go, at close | |
 >
 > **Rule:** the rollback steps must fit inside the window with the cut-over steps. If they do not, the window is too short.
+>
+> For a complex cut-over, add a clock time to each step and a second person who checks it before the next step starts.
 
 ### When the migration is a consolidation
 

@@ -324,13 +324,15 @@ Implementer:                 Backup implementer:
 Application owner on call:   Go / no-go decision by:
 Pre-checks (backup taken and verified, snapshot, monitoring paused, users notified):
 Freeze point (if data moves): when the old system stops taking changes, and who announces it
-Steps (numbered, each with clock time, owner, expected result and who checks it):
+Steps (numbered, each with owner and expected result):
 Verification (what the owner tests, and what "working" looks like):
 Back-out trigger (the condition that means we roll back):
 Back-out steps (numbered, with time needed):
 Post-change (monitoring resumed, CMDB updated, funnel updated, owner sign-off):
 ------------------------------------------------------------
 ```
+
+For a complex cut-over, add a clock time to each step and a second person who checks it before the next step starts.
 
 ⚠️ **Write the back-out time into the window.** If backing out takes two hours, the decision to back
 out has to be made two hours before the window closes. Teams that skip this finish a failed change at
