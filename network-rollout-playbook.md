@@ -168,7 +168,7 @@ Store and branch cut-overs are usually small enough for one window. Use the same
 
 NIST SP 800-53 Rev. 5 control CM-3(2): "Test, validate, and document changes to the system before finalizing the implementation of the changes."
 
-**Test the business functions afterward, from the site.** A link light and a successful ping prove the network is up. They do not prove a register can take a payment, a call center agent can take a call or a printer can print a label. Agree the list of business tests with each site type during planning (they come from the traceability matrix in Step 1), and have the on-site contact run them before the change is closed.
+**Test the business functions afterward, from the site.** A link light and a successful ping prove the network is up. They do not prove a register can take a payment, a call center agent can take a call or a printer can print a label. Agree the list of business tests with each site type during planning (Step 2's specifications are the place for them), and have the on-site contact run them before the change is closed.
 
 > **Template C: Site cut-over checklist** (one per site, per change)
 >
