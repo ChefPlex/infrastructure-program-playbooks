@@ -244,13 +244,15 @@ A typical sequence for a system that moves with its data:
 
 1. **Freeze.** At a stated time the old system stops taking updates. Everyone who uses it is told the time in advance.
 2. **Back up and verify.** The backup is confirmed good before anything is shut down.
-3. **Verify the data, then load it.** Each data set that has to be checked (account codes, product codes, customer records) is signed off by named people before it is loaded, and the loads run in order. When two people must verify a data set, the second verification is a predecessor of the load.
+3. **Verify the data, then load it.** Each data set that has to be checked is signed off before it is loaded, and the loads run in order.
 4. **Shut down, move, start up.** Physical moves, or the final replication and cut-over (Step 6).
 5. **Test.** The business owner's tests, not only the technical checks.
 6. **Go live.** A soft launch to a small group can come before the full launch, with a few days between them.
 7. **Keep the old system readable.** Set a date, often a month later, after which the old system is switched off. Until then, it answers questions about the data that moved.
 
-Send status at each announced time, whether or not anything changed: backup complete, shutdown, in transit, loading, testing, live. Put the time and the state in the subject line ("Testing in progress, 3:00 a.m. Sunday"; "Move complete, 9:30 a.m. Sunday"), so people can follow the weekend from their inbox without opening anything. A late step shows up as a missed or changed update, and nobody needs to call the people doing the work to find out. When there are several moves, write down how long each one took. If the last move took 36 hours, plan the next one from that.
+Send status at each announced time, whether or not anything changed: backup complete, shutdown, in transit, loading, testing, live. Put the time and the state in the subject line, so people can follow the weekend from their inbox without opening anything. A late step shows up as a missed or changed update, and nobody needs to call the people doing the work to find out. When there are several moves, write down how long each one actually took, and plan the next one from that.
+
+**An example from one move weekend.** The account codes, product codes and customer records were each checked by two named people, and the second check had to finish before that load could start. Status went out with the time and state in the subject line, such as "Testing in progress, 3:00 a.m. Sunday" and "Move complete, 9:30 a.m. Sunday", so people followed the weekend from their inbox. The first move took 36 hours, and the next one was planned from that number rather than from the original estimate.
 
 ## Step 10: Fold a new application or web property into both sites
 
