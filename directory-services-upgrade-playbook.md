@@ -55,11 +55,11 @@ too. Microsoft's upgrade guidance says the schema preparation step runs "only on
 each newer version of Windows Server", which is another way of saying it touches everything in the
 forest, kept generation included.
 
-**Weak scope statement:**
+**Unknown scope statement:**
 
 > Upgrade all domain controllers to Windows Server 2022 and raise the functional level.
 
-**Better scope statement:**
+**Actionable scope statement:**
 
 > Retire the 18 domain controllers running the retiring release across the forest before the
 > vendor end-of-support date. Promote 10 replacements on the new release. The 6 domain controllers
@@ -67,7 +67,7 @@ forest, kept generation included.
 > the three departmental domains into their parent domains. The forest functional level target is a
 > separate, recorded decision (see Step 3).
 
-The better version names the boundary, gives the reader numbers to check against, and refuses to
+The actionable version names the boundary, gives the reader numbers to check against, and refuses to
 smuggle the functional level in as a task.
 
 > **Template: coexistence scope statement**
@@ -233,11 +233,11 @@ empty password and thus cause poorly implemented clients to request Unauthentica
 device that appears to authenticate may be binding anonymously.** It works until a DC stops allowing
 anonymous access, and then it looks like the upgrade broke it.
 
-**Weak action item:**
+**Unknown action item:**
 
 > Check which apps use LDAP.
 
-**Better action item:**
+**Actionable action item:**
 
 > Owner: directory lead. By [date], produce the LDAP consumer list from 30 days of event 2889 on
 > every DC, plus DNS and flow logs for clients that bind securely. Each entry gets an owner, the DC
@@ -416,7 +416,7 @@ rounded.
 
 **The estate.** One forest, two halves on separate DNS namespaces: the corporate domain on
 `calder.example` and the operations domain on `calderlogistics.example`. Three departmental domains
-(finance, engineering and a legacy acquisition) sit under them. Thirty DCs in total.
+(finance, engineering and a legacy acquisition) sit under them. Twenty-four DCs in total.
 
 **The deadline.** Eighteen DCs run a release whose vendor support ends in nine months (Windows
 Server 2012 R2 in this example, kept alive on paid Extended Security Updates that end

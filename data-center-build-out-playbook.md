@@ -52,7 +52,7 @@ The level that matters most in practice is concurrent maintainability, which the
 
 > **P-04: DR storage array, order placed.** Owner: one named storage lead. PO by March 1 to hold a committed ship date of April 15 (vendor quote attached). Install cannot start until P-07 (DR rack power, two feeds) is energized. **If the PO slips, go-live slips day for day; there is no parallel path.**
 
-The actionable line names the dependency that the unknown one hides: the hardware is useless until the power it plugs into exists, and that is a different team's work on a different contract. Log every long-lead item as a dependency with a likelihood and an impact, the way the [RAID log guide](https://github.com/ChefPlex/tpm-templates/blob/main/raid-log-guide.md) treats them.
+The actionable line names the dependency that the unknown version hides: the hardware is useless until the power it plugs into exists, and that is a different team's work on a different contract. Log every long-lead item as a dependency with a likelihood and an impact, the way the [RAID log guide](https://github.com/ChefPlex/tpm-templates/blob/main/raid-log-guide.md) treats them.
 
 ## Step 3: Plan the floor on paper before anything is racked
 

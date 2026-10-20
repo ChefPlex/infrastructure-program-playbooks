@@ -132,11 +132,11 @@ slippage:
 | **Upgrade planning** | Decided: upgrade in place or replace, scheduled or being scheduled |
 | **Complete** | Off the old version, verified |
 
-**Weak status line:**
+**Unknown status line:**
 
 > Server count revised from 400 to 520. Completion now 12 percent, down from 15 percent.
 
-**Better status line:**
+**Actionable status line:**
 
 > Discovery added 120 systems this month (scanner run on two segments not previously covered).
 > 520 identified. 140 in analysis, 90 decommission planning, 210 upgrade planning, 60 complete.
@@ -249,12 +249,12 @@ stragglers can cost the same as covering a hundred, which makes the last few sys
 expensive per system than the first few. Read the actual terms; they change between product
 generations.
 
-**Weak business case:**
+**Unknown business case:**
 
 > The operating system goes out of support next year. We need to upgrade approximately 500 servers.
 > Requesting budget for the migration program.
 
-**Better business case:**
+**Actionable business case:**
 
 > Vendor support for 500 servers ends on a fixed date in 14 months. After that date there are no
 > security fixes. Extended support is quoted at $1.6 million per year, rising if we fall below the
@@ -263,7 +263,7 @@ generations.
 > third of the estate to be decommissioned rather than upgraded, which is where most of the savings
 > are.
 
-The numbers in the better version are illustrative. The structure is the point: one-time cost, annual
+The numbers in the actionable version are illustrative. The structure is the point: one-time cost, annual
 cost of waiting, and the comparison on one line.
 
 ---
