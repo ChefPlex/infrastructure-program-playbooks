@@ -42,17 +42,17 @@ The level that matters most in practice is concurrent maintainability, which the
 | **Cross-connects** | Cheap, small and forgotten, then they block go-live | List every one in the plan with an owner |
 | **Contract signature** | Nothing above starts until legal and procurement finish | Put contract review on the plan as a task with a date |
 
-### Weak vs better
+### Unknown vs Actionable
 
-**Weak plan line**
+**Unknown plan line**
 
 > Procure storage hardware. Owner: Infrastructure. Due: Q2.
 
-**Better plan line**
+**Actionable plan line**
 
 > **P-04: DR storage array, order placed.** Owner: one named storage lead. PO by March 1 to hold a committed ship date of April 15 (vendor quote attached). Install cannot start until P-07 (DR rack power, two feeds) is energized. **If the PO slips, go-live slips day for day; there is no parallel path.**
 
-The better line names the dependency that the weak one hides: the hardware is useless until the power it plugs into exists, and that is a different team's work on a different contract. Log every long-lead item as a dependency with a likelihood and an impact, the way the [RAID log guide](https://github.com/ChefPlex/tpm-templates/blob/main/raid-log-guide.md) treats them.
+The actionable line names the dependency that the unknown one hides: the hardware is useless until the power it plugs into exists, and that is a different team's work on a different contract. Log every long-lead item as a dependency with a likelihood and an impact, the way the [RAID log guide](https://github.com/ChefPlex/tpm-templates/blob/main/raid-log-guide.md) treats them.
 
 ## Step 3: Plan the floor on paper before anything is racked
 
@@ -98,13 +98,13 @@ Ask four questions for every component:
 3. **What runs out first?** Usually not disk. It is power per rack, switch ports or floor space.
 4. **What is the scaling rule for repeated sites?** When the same design rolls out to many locations, the specification needs a rule (for example, "one port per device plus 25 percent spare") rather than a hand-sized list per site.
 
-### Weak vs better
+### Unknown vs Actionable
 
-**Weak specification:** "DR array sized to match current production capacity."
+**Unknown specification:** "DR array sized to match current production capacity."
 
-**Better specification:** "DR array sized to hold production capacity at month 36 on the measured 30 percent annual growth trend, with the frame, rack power and switch ports for one further expansion shelf reserved now. Expansion beyond that is a new frame and is out of this program's scope, recorded as such."
+**Actionable specification:** "DR array sized to hold production capacity at month 36 on the measured 30 percent annual growth trend, with the frame, rack power and switch ports for one further expansion shelf reserved now. Expansion beyond that is a new frame and is out of this program's scope, recorded as such."
 
-The weak version fails twice: it is undersized by the time it is installed, and DR that is smaller than production is not DR for the systems that do not fit.
+The unknown version fails twice: it is undersized by the time it is installed, and DR that is smaller than production is not DR for the systems that do not fit.
 
 ## Step 5: Build primary and DR as a pair
 
@@ -177,13 +177,13 @@ The business case is usually maintenance, power, cooling and floor space. Write 
 
 **New equipment is not ready because it powered on.** Acceptance testing is the step between "installed" and "carrying production," and it is where you find the failed component, the miscabled path or the half-configured redundancy while it is still cheap.
 
-### Weak vs better
+### Unknown vs Actionable
 
-**Weak acceptance:** "Array installed and passing vendor health check."
+**Unknown acceptance:** "Array installed and passing vendor health check."
 
-**Better acceptance:** "Array accepted when: (1) it has run under a test load for an agreed burn-in period with no hardware faults; (2) each redundant component has been failed on purpose (one power feed pulled, one controller failed, one network path disconnected) with no loss of service; (3) performance under the test load meets the specified baseline; (4) monitoring and alerting fire for each induced failure; (5) the asset is in inventory and the support contract shows it as covered. Accepted by one named storage lead."
+**Actionable acceptance:** "Array accepted when: (1) it has run under a test load for an agreed burn-in period with no hardware faults; (2) each redundant component has been failed on purpose (one power feed pulled, one controller failed, one network path disconnected) with no loss of service; (3) performance under the test load meets the specified baseline; (4) monitoring and alerting fire for each induced failure; (5) the asset is in inventory and the support contract shows it as covered. Accepted by one named storage lead."
 
-The better version tests the redundancy you paid for. Two power supplies prove nothing until one of them has been unplugged while the system kept running. Write acceptance criteria into the hardware contract where you can, so the vendor's install service is not finished until they are met. The [vendor and statement of work (SOW) guide](https://github.com/ChefPlex/tpm-templates/blob/main/vendor-and-sow-management.md) covers how to make acceptance a defined act by a named person.
+The actionable version tests the redundancy you paid for. Two power supplies prove nothing until one of them has been unplugged while the system kept running. Write acceptance criteria into the hardware contract where you can, so the vendor's install service is not finished until they are met. The [vendor and statement of work (SOW) guide](https://github.com/ChefPlex/tpm-templates/blob/main/vendor-and-sow-management.md) covers how to make acceptance a defined act by a named person.
 
 ## Step 8: DR is only real once a failover test passes
 

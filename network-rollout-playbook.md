@@ -35,13 +35,13 @@ Each stage produces something the next one needs: no scope without a charter, no
 | **Track** (Monitoring and Controlling) | Change requests and re-baselines, in one place | An updated schedule and budget |
 | **Close** (Closing) | Old circuits cancelled, handover to network operations, close-out report (Step 9) | Operations |
 
-### Weak vs better
+### Unknown vs Actionable
 
-**Weak plan:** a project plan whose first task is "Schedule site cut-overs," with requirements gathering running in parallel.
+**Unknown plan:** a project plan whose first task is "Schedule site cut-overs," with requirements gathering running in parallel.
 
-**Better plan:** the wave schedule has the approved site design and the circuit order dates as predecessors. The site design has the non-functional specifications as its predecessor, and they have the signed requirements as theirs. When requirements slip, the plan shows the cut-overs slipping with them, on the day it happens.
+**Actionable plan:** the wave schedule has the approved site design and the circuit order dates as predecessors. The site design has the non-functional specifications as its predecessor, and they have the signed requirements as theirs. When requirements slip, the plan shows the cut-overs slipping with them, on the day it happens.
 
-The weak plan looks faster for the first month. Then the cut-over dates arrive and every slip since the start shows up at once.
+The unknown plan looks faster for the first month. Then the cut-over dates arrive and every slip since the start shows up at once.
 
 ## Step 2: Write the non-functional specifications before the site design
 
@@ -145,11 +145,11 @@ An illustrative four-week pre-work window:
 
 Surveys add work. A site counted as four switches turns out to have six, or the closet needs new power before anything can be installed. Engineers get pulled onto higher-priority work with no return date. **Each of those is a change request with a new baseline,** approved through the same integrated change control the charter set up, and reported with the reason.
 
-### Weak vs better
+### Unknown vs Actionable
 
-**Weak status line:** "Rollout is 60 percent complete. Some sites delayed."
+**Unknown status line:** "Rollout is 60 percent complete. Some sites delayed."
 
-**Better status line:** "24 of 40 sites cut over; plan was 26. Two sites moved from week 14 to week 17: their closets need new power circuits, ordered on the 3rd, facility date the 28th. Change request 4 re-baselines the finish from October 31 to November 14 for those two sites only. All other weeks unchanged."
+**Actionable status line:** "24 of 40 sites cut over; plan was 26. Two sites moved from week 14 to week 17: their closets need new power circuits, ordered on the 3rd, facility date the 28th. Change request 4 re-baselines the finish from October 31 to November 14 for those two sites only. All other weeks unchanged."
 
 ## Step 6: Cut each site over in small changes
 
