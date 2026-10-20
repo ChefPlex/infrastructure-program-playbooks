@@ -150,8 +150,9 @@ Two consequences for a coexistence program:
   environment can support" is the right rule, read honestly. If the kept generation runs an older
   release, the ceiling is that release's level, and the only way past it is to pull the kept
   generation into scope.
-- **The squeeze runs both ways.** The newest release in the matrix cannot run at the oldest level.
-  Choosing the release for the new DCs and choosing the functional level are one decision, not two.
+- **The squeeze runs both ways.** The newest release in the matrix cannot run at the oldest level:
+  a Windows Server 2025 DC needs at least the 2016 level. Choosing the release for the new DCs and
+  choosing the functional level are one decision, not two.
 
 ### Why one level lower is often the right answer
 
@@ -417,24 +418,27 @@ rounded.
 `calder.example` and the operations domain on `calderlogistics.example`. Three departmental domains
 (finance, engineering and a legacy acquisition) sit under them. Thirty DCs in total.
 
-**The deadline.** Eighteen DCs run a release whose vendor support ends in nine months. That date is
-fixed and set outside the company.
+**The deadline.** Eighteen DCs run a release whose vendor support ends in nine months (Windows
+Server 2012 R2 in this example, kept alive on paid Extended Security Updates that end
+October 13, 2026). That date is fixed and set outside the company.
 
-**The constraint.** Six DCs at the distribution sites run a newer but still older release
-(Windows Server 2012 R2 in this example). They support a warehouse system owned by another team,
+**The constraint.** Six DCs at the distribution sites run a newer release that is still supported
+but older than the newest (Windows Server 2019 in this example). They support a warehouse system owned by another team,
 and that team has a freeze through peak season. They are out of scope and must not be disturbed.
 
 **Scope.** Retire 18, promote 10 on Windows Server 2022, keep 6, collapse the three departmental
 domains into their parents. Merging the two namespaces was raised and explicitly deferred.
 
-**The functional level decision.** The original plan said *raise to the 2016 level*. The kept
-distribution-site DCs cannot run at 2016, so reaching it would mean pulling them into scope against
-the other team's freeze. The 2012 R2 level was reachable once the 18 were gone, and it is the oldest
-level on the current matrix. Nobody could name a 2016-level feature the business needed. The program
-recorded 2012 R2 as the target, with the revisit trigger written as: *when the distribution-site DCs
-reach their own end of support, or when the first Windows Server 2025 DC is planned*. The second
-half is there because Windows Server 2025 cannot run at the 2012 R2 level. The choice of Windows Server 2022 for the new DCs came out of the same
-decision.
+**The functional level decision.** The original plan said *raise to the 2025 level*, the highest
+on the matrix. Only Windows Server 2025 DCs can run at 2025, so reaching it would mean building the
+new DCs on 2025 and replacing the kept distribution-site DCs against the other team's freeze. The
+18 retiring DCs held the forest at the 2012 R2 level. Once they were gone, the 2016 level was
+reachable without touching the distribution sites, and it is the floor a Windows Server 2025 DC
+needs to join. Nobody could name a
+2025-level feature the business needed. The program recorded 2016 as the target, with the revisit
+trigger written as: *when the distribution-site DCs are replaced, or reach their own end of
+support*. The choice of Windows Server 2022 for the new DCs came out of the same decision: at the
+2016 level, 2022 and 2025 both work, and the team already had a hardened 2022 build.
 
 **The binders.** Thirty days of event 2889 across all DCs produced about 140 distinct client
 addresses. Roughly 40 were applications, 70 were devices (printers, scanners, badge readers, two
@@ -447,7 +451,7 @@ never expire and about 60 had no identifiable owner. They were recorded with own
 and handed to the security team as a follow-on. Twelve that blocked a DC retirement were fixed
 inside the program.
 
-**Execution.** A test environment with both namespaces, a 2012 R2 DC, a sample printer, two
+**Execution.** A test environment with both namespaces, a 2019 DC, a sample printer, two
 applications and the month-end job was built in the first six weeks. Every promotion and retirement
 was a separate after-hours change with a rehearsed MOP. SYSVOL in the acquisition domain was still on
 FRS and was migrated to DFSR first, in its own window. One DC failed to demote cleanly; the window
